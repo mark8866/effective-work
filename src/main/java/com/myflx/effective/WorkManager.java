@@ -13,11 +13,10 @@ import java.util.concurrent.TimeUnit;
  */
 public class WorkManager {
     public static final ThreadPoolExecutor COMMON_POOL =
-            new ThreadPoolExecutor(Runtime.getRuntime().availableProcessors() * 2, 12,
-                    15L, TimeUnit.SECONDS,
-                    new LinkedBlockingQueue<>(),
-                    (ThreadFactory) Thread::new);
-
+        new ThreadPoolExecutor(10, 10,
+            15L, TimeUnit.SECONDS,
+            new LinkedBlockingQueue<>(),
+            (ThreadFactory)Thread::new);
 
     private static final long DEFAULT_TIME_OUT = 10000000;
 
