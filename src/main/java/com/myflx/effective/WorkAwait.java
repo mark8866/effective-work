@@ -48,14 +48,15 @@ public class WorkAwait {
         }
 
         /**
-         * 任何依赖工作处理完成之后，依赖工作串行处理
+         * 任何依赖工作处理完成之后，依赖工作并行处理
          *
          * @param depends 依赖的工作
          * @param works   待处理工作
          * @param <E>     依赖工作出参，待处理工作入参
          * @return builder
          */
-        public <E> Builder<T, V> anyDependDoneThenSerialProcess(AbstractWork<?, ?>[] depends, AbstractWork<?, ?>[] works) {
+        public <E> Builder<T, V> anyDependDoneThenParalleProcess(AbstractWork<?, ?>[] depends,
+            AbstractWork<?, ?>[] works) {
             ParallelWaitWork parallelWaitWork = new ParallelWaitWork(depends);
             for (AbstractWork<?, ?> work : depends) {
                 work.addCallBackGroup(parallelWaitWork);
